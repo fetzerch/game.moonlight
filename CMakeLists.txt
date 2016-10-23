@@ -5,6 +5,14 @@ enable_language(CXX)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 
+# OSX ships with an outdated version of OpenSSL. By default CMake would find
+# this version, so CMake requires you to manually specify the correct OpenSSL
+# directory. CMake only checks for the system variable, so if it is empty
+# use the environment variable
+if(NOT OPENSSL_ROOT_DIR)
+    set(OPENSSL_ROOT_DIR "$ENV{OPENSSL_ROOT_DIR}")
+endif()
+
 find_package(Kodi           REQUIRED)
 find_package(kodiplatform   REQUIRED)
 find_package(p8-platform    REQUIRED)

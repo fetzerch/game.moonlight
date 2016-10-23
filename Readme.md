@@ -47,6 +47,12 @@ make clean
 
 ### Building on OSX
 
+OSX ships with an outdated version of OpenSSL. By default CMake would find this version, so CMake requires you to manually specify the correct OpenSSL directory. If you installed OpenSSL via brew, you should use:
+
+```shell
+export OPENSSL_ROOT_DIR=/usr/local/opt/openssl/
+```
+
 Building on OSX is similar to Linux, but all the paths are determined for you. This command will download, build and install the add-on to the `addons/` directory in your Kodi repo:
 
 ```shell
